@@ -32,7 +32,7 @@ for file in files:
 	(thresh, im_bw) = cv2.threshold(im_gray, 128, 255, cv2.THRESH_BINARY | cv2.THRESH_OTSU)
 	x.append(cv2.resize(im_bw, IMG_SIZE, interpolation=cv2.INTER_CUBIC))
 x=np.asarray(x)
-x=np.reshape(x,(2,128,128,1))
+x=np.reshape(x,(len(files),128,128,1))
 pred_Y=multi_disease_model.predict(x,verbose = True)
 for i in range(len(pred_Y)):
 	pred_Y[i][7]=0
