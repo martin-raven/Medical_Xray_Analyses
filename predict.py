@@ -37,4 +37,8 @@ pred_Y=multi_disease_model.predict(x,verbose = True)
 for i in range(len(pred_Y)):
 	pred_Y[i][7]=0
 for i in range(len(pred_Y)):
-	print(labels[pred_Y[i].tolist().index(max(pred_Y[i].tolist()))])
+	maxvalue=max(pred_Y[i].tolist())
+	if(maxvalue>3.0):
+		print(labels[pred_Y[i].tolist().index(maxvalue)])
+	else:
+		print("Unknown disease")
